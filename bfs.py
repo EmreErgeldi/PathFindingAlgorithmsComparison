@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def bfs(graph, start_node, target_node):
     visited = set()
     queue = deque([(start_node, [start_node])])
