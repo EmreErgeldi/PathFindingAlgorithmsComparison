@@ -89,15 +89,17 @@ data = [
 # İlleri temsil eden sözlük
 cities = {row[2]: {'id': row[0], 'lat': row[3], 'lon': row[4], 'neighbors': []} for row in data}
 
+
 # Gerçek uzaklık hesaplama fonksiyonu
 def calculate_distance(lat1, lon1, lat2, lon2):
-    R = 6371  # Dünya yarıçapı (km)
+    radius = 6371  # Dünya yarıçapı (km)
     dlat = math.radians(lat2 - lat1)
     dlon = math.radians(lon2 - lon1)
-    a = math.sin(dlat / 2) * math.sin(dlat / 2) + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon / 2) * math.sin(dlon / 2)
+    a = math.sin(dlat / 2) * math.sin(dlat / 2) + math.cos(math.radians(lat1)) * math.cos(
+        math.radians(lat2)) * math.sin(dlon / 2) * math.sin(dlon / 2)
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-    distance = R * c
-    return distance
+    return radius * c
+
 
 # Uzaklık ve komşuluk bilgilerini oluştur
 for city1_name, city1 in cities.items():
