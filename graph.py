@@ -1172,7 +1172,7 @@ graph = [
     },
     {
         "id": 34,
-        "name": "İstanbul",
+        "name": "istanbul",
         "lat": 41.046419,
         "lon": 29.033115,
         "neighbors": [
@@ -1210,7 +1210,7 @@ graph = [
     },
     {
         "id": 35,
-        "name": "İzmir",
+        "name": "izmir",
         "lat": 38.423652,
         "lon": 27.142797,
         "neighbors": [
