@@ -26,6 +26,16 @@ def uniform_cost_search(graph, start_city_name, goal_city_name):
             continue
         visited.add(current_id)
         print(f"Şu an {graph[current_id - 1]['name']} şehrindeyiz.")
+
+        if current_id != goal_id:
+            print("Komşular ve Mesafeler:")
+            visited_neighbors = set(path)  # Keep track of visited neighbors separately
+            for neighbor in graph[current_id - 1]['neighbors']:
+                neighbor_id = neighbor['id']
+                neighbor_name = graph[neighbor_id - 1]['name']
+                distance = neighbor['distance']
+                if neighbor_id not in visited_neighbors and neighbor_id not in visited:
+                    print(f"   - {neighbor_name}: {distance} km")
         node_count += 1  # Her adımda bir node'a uğranıldığında sayaç arttırılır
         if current_id == goal_id:
             return cost, path, node_count
@@ -36,11 +46,11 @@ def uniform_cost_search(graph, start_city_name, goal_city_name):
                 new_cost = cost + neighbor['distance']
                 new_path = path + [neighbor_id]
                 heapq.heappush(heap, (new_cost, neighbor_id, new_path))
-    return float('inf'), [], 0  # If the goal is not reachable
+    return float('inf'), [], 0  # Geçersiz hedef
 
 while True:
-    print("######################## Şehirler Arasi Mesafe Hesaplama - Uniform Cost Search (Çikis yapmak için 'q' giriniz) #########################")
-    start_city_name = input("Başlangiç Şehri: ")
+    print("######################## Şehirler Arası Mesafe Hesaplama - Uniform Cost Search (Çıkış yapmak için 'q' giriniz) #########################")
+    start_city_name = input("Başlangıç Şehri: ")
     goal_city_name = input("Hedef Şehir: ")
     
     if start_city_name == "q" or goal_city_name == "q":
@@ -54,6 +64,6 @@ while True:
         print(f"Geçersiz Şehir, Tekrar Deneyiniz...")
     else:
         print(f"Hesaplanan mesafe: {distance} km.")
-        print(f"Ziyaret Edilen Şehirler: {', '.join([graph[node - 1]['name'] for node in path])}")
+        print(f"Bulunan Yol: {' -> '.join([graph[node - 1]['name'] for node in path])}")
         print(f"Toplam {node_count} adet şehir(düğüm) ziyaret edildi.")
         print(f"Toplam Süre: {end_time - start_time} ns.")
