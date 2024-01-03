@@ -34,8 +34,7 @@ def uniform_cost_search(graph, start_city_name, goal_city_name):
                 neighbor_id = neighbor['id']
                 neighbor_name = graph[neighbor_id - 1]['name']
                 distance = neighbor['distance']
-                if neighbor_id not in visited_neighbors and neighbor_id not in visited:
-                    print(f"   - {neighbor_name}: {distance} km")
+                print(f"   - {neighbor_name}: {distance} km")
         node_count += 1  # Her adımda bir node'a uğranıldığında sayaç arttırılır
         if current_id == goal_id:
             return cost, path, node_count
