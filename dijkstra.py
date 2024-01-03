@@ -1,5 +1,6 @@
 import heapq
 import time
+import matplotlib.pyplot as plt
 from turkiye import graph
 
 def get_city_id_by_name(graph, city_name):
@@ -23,7 +24,11 @@ def dijkstra(graph, start, goal):
             for city in path:
                 print(graph[city - 1]["name"])
             print("Total Time:", end_time - start_time, "nano seconds")
+
+            # Entegrasyon: En kısa yolu çiz
+            plot_path(graph, path)
             return
+
         if current_city in visited:
             continue
 
@@ -41,9 +46,25 @@ def dijkstra(graph, start, goal):
     print("No path found!")
     print("Total Time:", end_time - start_time, "nano seconds")
 
-    
+
+def plot_path(graph, path):
+    # Visualise
+    x, y = [], []
+    for i in path:
+        x.append(graph[i - 1]["lon"])
+        y.append(graph[i - 1]["lat"])
+        plt.text(graph[i - 1]["lon"], graph[i - 1]["lat"], graph[i - 1]["name"])
+
+    x.append(x[0])
+    y.append(y[0])
+    plt.title("Dijkstra Algorithm")
+    plt.scatter(x, y)
+    plt.plot(x, y)
+    plt.show()
+    plt.draw()
+
+
 # Example usage:
-# Assuming 'cities' is your dictionary array
 start_city_name = input("Enter the current city: ")
 goal_city_name = input("Enter the goal city: ")
 
