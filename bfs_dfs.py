@@ -1,5 +1,7 @@
 from collections import deque
 
+def get_city_name(city_id, graph):
+    return next(node['name'] for node in graph if node['id'] == city_id)
 
 def bfs(graph, start_city, target_city):
     name_to_id = {node['name']: node['id'] for node in graph}
@@ -11,7 +13,7 @@ def bfs(graph, start_city, target_city):
         return []
 
     visited = set()
-    queue = deque([(start_id, [start_id])])
+    queue = deque([(start_id, [start_city])])
 
     while queue:
         current_node, path = queue.popleft()
@@ -25,7 +27,7 @@ def bfs(graph, start_city, target_city):
             for neighbor in neighbors:
                 neighbor_id = neighbor['id']
                 if neighbor_id not in visited:
-                    queue.append((neighbor_id, path + [neighbor_id]))
+                    queue.append((neighbor_id, path + [get_city_name(neighbor_id, graph)]))
 
     return []
 
@@ -40,7 +42,7 @@ def dfs(graph, start_city, target_city):
         return []
 
     visited = set()
-    stack = [(start_id, [start_id])]
+    stack = [(start_id, [start_city])]
 
     while stack:
         current_node, path = stack.pop()
@@ -54,6 +56,6 @@ def dfs(graph, start_city, target_city):
             for neighbor in neighbors:
                 neighbor_id = neighbor['id']
                 if neighbor_id not in visited:
-                    stack.append((neighbor_id, path + [neighbor_id]))
+                    stack.append((neighbor_id, path + [get_city_name(neighbor_id, graph)]))
 
     return []
