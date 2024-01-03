@@ -4,6 +4,7 @@ import time
 
 graph = map.graph
 
+# Şehir adıyla bir şehrin id değerini bulur
 def get_city_id_by_name(graph, city_name):
     for city in graph:
         if city['name'].lower() == city_name.lower():
@@ -21,7 +22,7 @@ def uniform_cost_search(graph, start_city_name, goal_city_name):
     heap = [(0, start_id, [start_id])]
     node_count = 0  # Sayaç başlatılır
     while heap:
-        (cost, current_id, path) = heapq.heappop(heap)
+        (cost, current_id, path) = heapq.heappop(heap) #Minimum maliyetli düğümü çıkar
         if current_id in visited:
             continue
         visited.add(current_id)
@@ -37,14 +38,14 @@ def uniform_cost_search(graph, start_city_name, goal_city_name):
                 print(f"   - {neighbor_name}: {distance} km")
         node_count += 1  # Her adımda bir node'a uğranıldığında sayaç arttırılır
         if current_id == goal_id:
-            return cost, path, node_count
+            return cost, path, node_count # Hedef düğüme ulaşıldığında sonuçları döndür
         neighbors = graph[current_id - 1]['neighbors']
         for neighbor in neighbors:
             neighbor_id = neighbor['id']
             if neighbor_id not in visited:
                 new_cost = cost + neighbor['distance']
                 new_path = path + [neighbor_id]
-                heapq.heappush(heap, (new_cost, neighbor_id, new_path))
+                heapq.heappush(heap, (new_cost, neighbor_id, new_path)) # Yeni düğümü öncelikli kuyruğa ekle
     return float('inf'), [], 0  # Geçersiz hedef
 
 while True:
