@@ -1,7 +1,7 @@
 import heapq
 import time
 import matplotlib.pyplot as plt
-from turkiye import graph
+#from turkiye import graph
 
 def get_city_id_by_name(graph, city_name):
     for city in graph:
@@ -89,7 +89,7 @@ def dijkstra(graph, start, goal):
     print(f"Toplam Süre: {end_time - start_time} ns.")
 
 # Example usage:
-start_city_name = input("Enter the current city: ")
-goal_city_name = input("Enter the goal city: ")
+#start_city_name = input("Enter the current city: ")
+#goal_city_name = input("Enter the goal city: ")
 
-dijkstra(graph, start_city_name, goal_city_name)
+#dijkstra(graph, start_city_name, goal_city_name)

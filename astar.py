@@ -53,12 +53,12 @@ def a_star_search(graph, start_city, goal_city):
 
 # Example usage:
 # Assuming 'cities' is your dictionary array
-start_city_name = input("Enter the current city: ")
-goal_city_name = input("Enter the goal city: ")
+#start_city_name = input("Enter the current city: ")
+#goal_city_name = input("Enter the goal city: ")
 
-# Find city IDs based on city names
-start_city = get_city_id_by_name(graph, start_city_name)
-goal_city = get_city_id_by_name(graph, goal_city_name)
+## Find city IDs based on city names
+#start_city = get_city_id_by_name(graph, start_city_name)
+#goal_city = get_city_id_by_name(graph, goal_city_name)
 
-# Run A* algorithm
-a_star_search(graph, start_city, goal_city)
+## Run A* algorithm
+#a_star_search(graph, start_city, goal_city)

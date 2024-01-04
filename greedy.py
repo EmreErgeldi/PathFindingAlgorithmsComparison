@@ -54,9 +54,9 @@ def greedy_search(graph, start_city, goal_city):        ## greedy search algorit
             goal_lat = graph[goal_city - 1]["lat"]
             goal_lon = graph[goal_city - 1]["lon"]
             first_heuristic = calculate_heuristic(start_lat, start_lon, goal_lat, goal_lon)
-            print(f"{start_city_name} & {goal_city_name} arası Sezgisel Maaliyet: {first_heuristic:.2f} km")
+            print(f"{get_city_name_by_id(graph, start_city)} & {get_city_name_by_id(graph, goal_city)} arası Sezgisel Maaliyet: {first_heuristic:.2f} km")
             real_cost = calculate_total_real_distance(graph, visited)
-            print(f"{start_city_name} & {goal_city_name} arası Gerçek Maaliyet: {real_cost:.2f} km")
+            print(f"{get_city_name_by_id(graph, start_city)} & {get_city_name_by_id(graph, goal_city)} arası Gerçek Maaliyet: {real_cost:.2f} km")
             return
 
         if current_city in visited:
@@ -85,12 +85,12 @@ def greedy_search(graph, start_city, goal_city):        ## greedy search algorit
 
 
 # Kullanıcı girişi
-start_city_name = input("Başlangıç şehrini girin: ")
-goal_city_name = input("Hedef şehri girin: ")
+#start_city_name = input("Başlangıç şehrini girin: ")
+#goal_city_name = input("Hedef şehri girin: ")
 
-# Şehir adına göre id'leri bul
-start_city = get_city_id_by_name(graph, start_city_name)
-goal_city = get_city_id_by_name(graph, goal_city_name)
+## Şehir adına göre id'leri bul
+#start_city = get_city_id_by_name(graph, start_city_name)
+#goal_city = get_city_id_by_name(graph, goal_city_name)
 
-# Algoritmayı çalıştır
-greedy_search(graph, start_city, goal_city)
+## Algoritmayı çalıştır
+#greedy_search(graph, start_city, goal_city)
