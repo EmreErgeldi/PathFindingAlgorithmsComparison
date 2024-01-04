@@ -22,14 +22,14 @@ def a_star_search(graph, start_city, goal_city):
 
         if current_city == goal_city:
             end_time = time.perf_counter_ns()
-            print("Path found!")
-            for city in path:
-                print(graph[city - 1]["name"])
-            print("Total Time:", end_time - start_time, "nano seconds")
+            for city_id in path:
+                print(graph[city_id - 1]["name"], end=" -> ")
+            print("\nTotal Time:", end_time - start_time, "nano seconds")
             return
         if current_city in visited:
             continue
 
+        print(f'Visiting {graph[current_city - 1]["name"]}')
         visited.add(current_city)
 
         for neighbor in graph[current_city - 1]["neighbors"]:
@@ -42,7 +42,7 @@ def a_star_search(graph, start_city, goal_city):
                 graph[goal_city - 1]["lon"],
             )
             total_cost = new_cost + heuristic
-
+            print(f'Neighbor: {graph[neighbor_id - 1]["name"]} - Cost: {total_cost}')
             heapq.heappush(
                 priority_queue, (total_cost, neighbor_id, path + [neighbor_id])
             )
