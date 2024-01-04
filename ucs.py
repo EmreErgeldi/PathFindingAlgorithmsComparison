@@ -48,22 +48,22 @@ def uniform_cost_search(graph, start_city_name, goal_city_name):
                 heapq.heappush(heap, (new_cost, neighbor_id, new_path)) # Yeni düğümü öncelikli kuyruğa ekle
     return float('inf'), [], 0  # Geçersiz hedef
 
-while True:
-    print("######################## Şehirler Arası Mesafe Hesaplama - Uniform Cost Search (Çıkış yapmak için 'q' giriniz) #########################")
-    start_city_name = input("Başlangıç Şehri: ")
-    goal_city_name = input("Hedef Şehir: ")
+#while True:
+#    print("######################## Şehirler Arası Mesafe Hesaplama - Uniform Cost Search (Çıkış yapmak için 'q' giriniz) #########################")
+#    start_city_name = input("Başlangıç Şehri: ")
+#    goal_city_name = input("Hedef Şehir: ")
     
-    if start_city_name == "q" or goal_city_name == "q":
-        break
+#    if start_city_name == "q" or goal_city_name == "q":
+#        break
 
-    start_time = time.perf_counter_ns()
-    distance, path, node_count = uniform_cost_search(graph, start_city_name, goal_city_name)
-    end_time = time.perf_counter_ns()
+#    start_time = time.perf_counter_ns()
+#    distance, path, node_count = uniform_cost_search(graph, start_city_name, goal_city_name)
+#    end_time = time.perf_counter_ns()
 
-    if distance == float('inf'):
-        print(f"Geçersiz Şehir, Tekrar Deneyiniz...")
-    else:
-        print(f"Hesaplanan mesafe: {distance} km.")
-        print(f"Bulunan Yol: {' -> '.join([graph[node - 1]['name'] for node in path])}")
-        print(f"Toplam {node_count} adet şehir(düğüm) ziyaret edildi.")
-        print(f"Toplam Süre: {end_time - start_time} ns.")
+#    if distance == float('inf'):
+#        print(f"Geçersiz Şehir, Tekrar Deneyiniz...")
+#    else:
+#        print(f"Hesaplanan mesafe: {distance} km.")
+#        print(f"Bulunan Yol: {' -> '.join([graph[node - 1]['name'] for node in path])}")
+#        print(f"Toplam {node_count} adet şehir(düğüm) ziyaret edildi.")
+#        print(f"Toplam Süre: {end_time - start_time} ns.")
